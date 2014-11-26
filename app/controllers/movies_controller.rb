@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      rediect_to movies_path
+      redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!"
     else
       render :new
     end
@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
 
     if @movie.update_attributes(movie_params)
-      rediect_to movie_path(@movie)
+      redirect_to movie_path(@movie)
     else
       render :edit
     end
